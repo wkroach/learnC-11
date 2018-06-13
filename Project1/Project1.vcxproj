@@ -75,6 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>-D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -124,6 +125,8 @@
     <ClCompile Include="12.cpp" />
     <ClCompile Include="12_StrBlob.cpp" />
     <ClCompile Include="12_StrBlobPtr.cpp" />
+    <ClCompile Include="13.cpp" />
+    <ClCompile Include="13_StrVec.cpp" />
     <ClCompile Include="3_6.cpp" />
     <ClCompile Include="4.cpp" />
     <ClCompile Include="5.cpp" />
@@ -138,6 +141,8 @@
     <ClInclude Include="12.h" />
     <ClInclude Include="12_StrBlob.h" />
     <ClInclude Include="12_StrBlobPtr.h" />
+    <ClInclude Include="13.h" />
+    <ClInclude Include="13_StrVec.h" />
     <ClInclude Include="3.h" />
     <ClInclude Include="4.h" />
     <ClInclude Include="5.h" />

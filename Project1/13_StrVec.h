@@ -1,4 +1,5 @@
 #pragma once
+#include<iostream>
 #include<string>
 #include<memory>
 #include<utility>
@@ -27,7 +28,8 @@ public:
 		return cap - element;
 	}
 	void reserve(size_t newCapacity);
-	void resize(size_t newSize, const std::string &newValue = "");
+	void resize(size_t newSize);
+	void resize(size_t newSize, const std::string &newValue);
 
 
 private:

@@ -1,5 +1,6 @@
 #include"13_StrVec.h"
 
+std::allocator<std::string> StrVec::alloc;
 //默认构造函数
 StrVec::StrVec():element(nullptr), first_free(nullptr), cap(nullptr){
 }
@@ -28,6 +29,7 @@ StrVec &StrVec::operator=(const StrVec &rhs){
 
 StrVec::~StrVec(){
 	free();
+	std::cout << "free success" << std::endl;
 }
 
 void StrVec::push_back(const std::string &str){
@@ -44,7 +46,11 @@ void StrVec::reserve(size_t newCapacity){
 	reallocate(std::max(newCapacity, size() * 2));
 }
 
-void StrVec::resize(size_t newSize, const std::string & newValue = ""){
+void StrVec::resize(size_t newSize) {
+	resize(newSize, "");
+}
+
+void StrVec::resize(size_t newSize, const std::string &newValue){
 	if (newSize > capacity()) {
 		reallocate(std::max(newSize, size() * 2));
 	}

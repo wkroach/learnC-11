@@ -97,3 +97,49 @@ void Problem13_31() {
 	}
 	cout << endl;
 }
+
+void Problem13_testStrVec() {
+	auto loop = [](const string &str){
+		cout << str << " ";
+	};
+	//构造
+	StrVec strVec = { "123", "456", "789" };
+	for_each(begin(strVec), end(strVec), loop);
+	cout << endl;
+	//拷贝构造
+	StrVec strVec2(strVec);
+	for_each(begin(strVec2), end(strVec2), loop);	
+	cout << endl;
+	//push_back
+	strVec2.push_back("101112");
+	for_each(begin(strVec2), end(strVec2), loop);
+	cout << endl;
+	//赋值构造
+	StrVec strVec3;
+	strVec3 = strVec2;
+	for_each(begin(strVec3), end(strVec3), loop);
+	cout << endl;
+	//自赋值
+	strVec = strVec;
+	for_each(begin(strVec), end(strVec), loop);
+	cout << endl;
+	//resize
+	strVec2.resize(1);
+	cout << strVec2.size() << " " << strVec2.capacity() << endl;
+	for_each(begin(strVec2), end(strVec2), loop);
+	cout << endl;
+	//reserve
+	strVec3.reserve(5);
+	cout << "strVec3: " << strVec3.size() << " " << strVec3.capacity() << endl;
+	cout << endl;
+	strVec3 = strVec;
+	strVec3.reserve(10);
+	cout << "strVec3: " << strVec3.size() << " " << strVec3.capacity() << endl;
+	cout << endl;
+	//reallocate
+	StrVec strVec4;
+	for (int i = 0; i < 100; ++i) {
+		cout << strVec4.size() << " " << strVec4.capacity() << endl;
+		strVec4.push_back("hehe");
+	}
+}

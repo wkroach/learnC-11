@@ -4,6 +4,8 @@
 #include<algorithm>
 #include<string>
 #include<memory>
+
+#include"13_StrVec.h"
 using namespace std;
 
 class A {
@@ -120,3 +122,4 @@ void Problem13_15();
 void Problem13_16();
 void Problem13_30();
 void Problem13_31();
+void Problem13_testStrVec();

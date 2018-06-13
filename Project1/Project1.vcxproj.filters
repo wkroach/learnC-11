@@ -51,6 +51,12 @@
     <ClCompile Include="12_StrBlob.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="13.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="13_StrVec.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="6.h">
@@ -84,6 +90,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="13.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="13_StrVec.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

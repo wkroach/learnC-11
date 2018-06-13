@@ -13,12 +13,13 @@
 #include"10.h"
 #include"11.h"
 #include"12.h"
+#include"13.h"
 using namespace std;
 
 
 int main()
 {
-	Problem12_26();
+	Problem13_testStrVec();
 	getchar();
 	getchar();
 	return 0;
