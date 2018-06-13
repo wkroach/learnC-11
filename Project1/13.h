@@ -6,6 +6,7 @@
 #include<memory>
 
 #include"13_StrVec.h"
+#include"13_String.h"
 using namespace std;
 
 class A {
@@ -123,3 +124,4 @@ void Problem13_16();
 void Problem13_30();
 void Problem13_31();
 void Problem13_testStrVec();
+void Problem13_44();

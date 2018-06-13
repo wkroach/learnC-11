@@ -143,3 +143,20 @@ void Problem13_testStrVec() {
 		strVec4.push_back("hehe");
 	}
 }
+
+void Problem13_44() {
+	String str1 = "123";
+	cout<<str1<<endl;
+	String str2 = str1;
+	str2.push_back('4');
+	cout << str2 << endl;
+	String str3;
+	str3 = str2;
+	cout << str3 << endl;
+	str1 = str1;
+	cout << str1 << endl;
+	for (int i = 0; i < 100; ++i) {
+		cout << str1.size() << " " << str1.capacity() << endl;
+		str1.push_back('c');
+	}
+}

@@ -57,6 +57,9 @@
     <ClCompile Include="13_StrVec.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="13_String.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="6.h">
@@ -96,6 +99,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="13_StrVec.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="13_String.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

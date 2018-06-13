@@ -19,7 +19,7 @@ using namespace std;
 
 int main()
 {
-	Problem13_testStrVec();
+	Problem13_44();
 	getchar();
 	getchar();
 	return 0;
