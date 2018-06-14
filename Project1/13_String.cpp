@@ -19,12 +19,14 @@ String::String(const char *str){
 	auto data = alloc_copy(begin, end);
 	first_element_ = data.first;
 	first_free_ = capacity_ = data.second;
+	std::cout << "const char* constructor" << std::endl;
 }
 
 String::String(const String &rhs){
 	auto data = alloc_copy(std::begin(rhs), std::end(rhs));
 	first_element_ = data.first;
 	first_free_ = capacity_ = data.second;
+	std::cout << "copy constructor" << std::endl;
 }
 
 String &String::operator=(const String &rhs){
@@ -32,12 +34,30 @@ String &String::operator=(const String &rhs){
 	free();
 	first_element_ = data.first;
 	first_free_ = capacity_ = data.second;
+	std::cout << "copy assignment" << std::endl;
+	return *this;
+}
+
+String::String(String &&rhs):first_element_(rhs.first_element_),
+							 first_free_(rhs.first_free_),
+							 capacity_(rhs.capacity_){
+	rhs.first_element_ = rhs.first_free_ = rhs.capacity_ = nullptr;
+	std::cout << "move constructor" << std::endl;
+}
+
+String & String::operator=(String &&rhs){
+	free();
+	first_element_ = rhs.first_element_;
+	first_free_ = rhs.first_free_;
+	capacity_ = rhs.capacity_;
+	rhs.first_element_ = rhs.first_free_ = rhs.capacity_ = nullptr;
+	std::cout << "move assignment" << std::endl;
 	return *this;
 }
 
 String::~String(){
 	free();
-	std::cout << "free success" << std::endl;
+	//std::cout << "free success" << std::endl;
 }
 
 void String::push_back(const char &ch){

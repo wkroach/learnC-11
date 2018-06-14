@@ -13,6 +13,8 @@ public:
 	String(const char*);
 	String(const String &);
 	String& operator=(const String &);
+	String(String &&);
+	String& operator=(String &&);
 	~String();
 	void push_back(const char&);
 	char *begin() const {

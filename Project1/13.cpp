@@ -160,3 +160,58 @@ void Problem13_44() {
 		str1.push_back('c');
 	}
 }
+
+void Problem13_46() {
+	auto f = []() {return 1; };
+	vector<int> vi(100);
+	int &&r1 = f();
+	//无法将右值引用绑定到左值
+	//!int &&r2 = vi[0];
+	int &r2 = vi[0];
+	//右值引用本身是左值，只能被左值引用
+	int &r3 = r1;
+	int &&r4 = vi[0] * f();
+}
+
+//由于String只有拷贝构造和赋值构造函数，因此vector的每一次reallocate都会对所有String进行一次拷贝
+void Problem13_48() {
+	vector<String> arr;
+	for (int i = 0; i < 10; ++i) {
+		cout << "size: "<<arr.size() << " " << "capacity: "<<arr.capacity() << endl;
+		arr.push_back("123");
+	}
+}
+
+
+//由于String定义了移动构造函数和移动赋值函数，vector在reallocate时会使用移动构造而不是拷贝构造
+void Problem13_50() {
+	vector<String> arr;
+	String str("123");
+	//对于右值引用，初始化时可能会根据右侧对象使用不同的构造函数来创造一个临时对象
+	String &&tmp = "123";
+	cout << tmp << endl;
+	//如果添加的是一个左值，push_back会调用push_back(const val_type&)的重载函数，因此添加元素时是左值，使用拷贝构造，reallocate时会使用移动构造
+	for (int i = 0; i < 5; ++i) {
+		cout << "size: "<<arr.size() << " " << "capacity: "<<arr.capacity() << endl;
+		arr.push_back(str);
+	}
+	//如果添加的是一个右值，push_back会调用push_back(val_type&&)的重载函数, 因此添加元素时是右值，使用移动构造 那么所有构造均为移动构造
+	for (int i = 0; i < 5; ++i) {
+		cout << "size: "<<arr.size() << " " << "capacity: "<<arr.capacity() << endl;
+		arr.push_back("123");
+	}
+}
+
+void Problem13_53() {
+	HasPtr has_ptr_1("123");
+	HasPtr has_ptr_2;
+	has_ptr_2 = has_ptr_1;
+
+	//operator=(HasPtr)不能与operator=(HasPtr&&)共存，对于右值实参两者具有相同的参数匹配优先级
+	auto f = []()->HasPtr {
+		HasPtr tmp("456");
+		return tmp;
+	};
+	has_ptr_2 = std::move(has_ptr_1);
+	has_ptr_2 = f();
+}

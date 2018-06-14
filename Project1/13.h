@@ -59,14 +59,36 @@ class HasPtr {
 public:
 	friend void swap(HasPtr &lhs, HasPtr &rhs);
 	HasPtr(const string &s = string()) :ps(new string(s)), i(0) {}
-	HasPtr(const HasPtr& hasPtr) :ps(new string(*hasPtr.ps)),i(hasPtr.i) {}
-	HasPtr& operator=(const HasPtr& hasPtr) {
-		string tmpStr = *hasPtr.ps;
-		delete ps;
-		ps = new string(tmpStr);
-		i = hasPtr.i;
+	HasPtr(const HasPtr& hasPtr) :ps(new string(*hasPtr.ps)),i(hasPtr.i) {
+		cout << "copy constructor" << endl;
+	}
+	//HasPtr& operator=(const HasPtr& hasPtr) {
+	//	string tmpStr = *hasPtr.ps;
+	//	delete ps;
+	//	ps = new string(tmpStr);
+	//	i = hasPtr.i;
+	//	cout << "copy assignment" << endl;
+	//	return *this;
+	//}
+
+	//operator=(HasPtr)不能与operator=(HasPtr&&)共存，对于右值实参两者具有相同的参数匹配优先级
+	//当定义了移动构造函数时，一个operator=(HasPtr)即可满足移动和赋值两种功能(形参构造时实现，与swap无关)
+	HasPtr& operator=(HasPtr rhs) {
+		swap(*this, rhs);
+		cout << "copy and swap assignment" << endl;
 		return *this;
 	}
+	HasPtr(HasPtr&& rhs) :ps(rhs.ps), i(rhs.i) { 
+		rhs.ps = nullptr; 
+		cout << "move constructor" << endl;
+	}
+	//HasPtr& operator=(HasPtr&& rhs) {
+	//	ps = rhs.ps;
+	//	i = rhs.i;
+	//	rhs.ps = nullptr;
+	//	cout << "move assignment" << endl;
+	//	return *this;
+	//}
 	bool operator < (const HasPtr& rhs) {
 		cout << "<" << endl;
 		return *ps < *rhs.ps;
@@ -125,3 +147,7 @@ void Problem13_30();
 void Problem13_31();
 void Problem13_testStrVec();
 void Problem13_44();
+void Problem13_46();
+void Problem13_48();
+void Problem13_50();
+void Problem13_53();
