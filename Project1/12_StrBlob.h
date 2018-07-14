@@ -24,6 +24,8 @@ class StrBlob {
 public:
 	//友元声明
 	friend class StrBlobPtr;
+	friend bool operator == (const StrBlob&, const StrBlob&);
+	friend bool operator != (const StrBlob&, const StrBlob&);
 	typedef vector<string>::size_type size_type;
 
 	StrBlob();	
@@ -33,6 +35,12 @@ public:
 
 	size_type size() const;
 	bool empty() const;
+
+	//shared_ptr无法向const 指针一样让用户无法通过指针修改对象
+	//将data所指向对象的地址以const指针返回，则无法通过此地址来对data指向的对象进行修改
+	const vector<string>* get_data() const {
+		return &(*data);
+	}
 
 	void push_back(const string &s);
 	void pop_back();

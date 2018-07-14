@@ -8,6 +8,9 @@
 
 class StrVec {
 public:
+	friend bool operator == (const StrVec&, const StrVec&);
+	friend bool operator != (const StrVec&, const StrVec&);
+
 	StrVec();
 	StrVec(std::initializer_list<std::string> il);
 	StrVec(const StrVec&);

@@ -22,11 +22,22 @@ using namespace std;
 class StrBlob;
 class StrBlobPtr {
 public:
+	friend bool operator == (const StrBlobPtr&, const StrBlobPtr&);
+	friend bool operator != (const StrBlobPtr&, const StrBlobPtr&);
+
 	typedef vector<string>::size_type size_type;
 
 	StrBlobPtr();
 	StrBlobPtr(StrBlob &strBlob, size_type pos);
 	StrBlobPtr(const StrBlob &strBlob, size_type pos);
+
+	//返回week_ptr指向vector<string>对象的地址
+	const vector<string>* get_data_address() const{
+		return &(*wptr.lock());
+	}
+	size_type get_cur() const {
+		return cur;
+	}
 
 	StrBlobPtr& next();
 	//常量next，这样StrBlobPtr依旧可以迭代

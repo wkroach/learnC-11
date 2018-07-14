@@ -1,6 +1,14 @@
 #include"12_StrBlob.h"
 #include"12_StrBlobPtr.h"
 
+bool operator == (const StrBlob &lhs, const StrBlob &rhs) {
+	return	lhs.get_data() == rhs.get_data();
+}
+
+bool operator != (const StrBlob &lhs, const StrBlob &rhs) {
+	return !(lhs == rhs);
+}
+
 StrBlob::StrBlob():data(make_shared<vector<string>>()){}
 	//加了explicit就不能用列表初始化了:StrBlob b1 = {...}
 	//explicit StrBlob(initializer_list<string> il) :data(make_shared<vector<string>>(il)) {}

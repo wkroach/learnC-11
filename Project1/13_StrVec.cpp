@@ -1,5 +1,19 @@
 #include"13_StrVec.h"
 
+//重载相等，不等运算符
+bool operator == (const StrVec &lhs, const StrVec &rhs) {
+	auto p1 = lhs.begin(), p2 = rhs.begin();
+	for (; p1 != lhs.end() && p2 != rhs.end(); ++p1, ++p2) {
+		if (*p1 != *p2) {
+			return false;
+		}
+	}
+	return p1 == lhs.end() && p2 == rhs.end();
+}
+bool operator != (const StrVec &lhs, const StrVec &rhs) {
+	return !(lhs == rhs);
+}
+
 std::allocator<std::string> StrVec::alloc;
 //默认构造函数
 StrVec::StrVec():element(nullptr), first_free(nullptr), cap(nullptr){
@@ -46,6 +60,7 @@ void StrVec::reserve(size_t newCapacity){
 	reallocate(std::max(newCapacity, size() * 2));
 }
 
+//当newSize大于capacity时，直接reallocate，大于size时，直接往后添加默认元素，小于size时，从后往前删释放内存
 void StrVec::resize(size_t newSize) {
 	resize(newSize, "");
 }

@@ -5,9 +5,12 @@
 #include<utility>
 #include<algorithm>
 
+//声明与实现与StrVec基本一致,
 class String {
 public:
 	friend std::ostream& operator <<(std::ostream &os, const String&);
+	friend bool operator == (const String&, const String&);
+	friend bool operator != (const String&, const String&);
 
 	String();
 	String(const char*);

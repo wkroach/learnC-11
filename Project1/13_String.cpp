@@ -1,8 +1,22 @@
 #include"13_String.h"
 
+bool operator == (const String &lhs, const String &rhs) {
+	auto p1 = lhs.begin(), p2 = rhs.begin();
+	for (; p1 != lhs.end() && p2 != rhs.end(); ++p1, ++p2) {
+		if (*p1 != *p2) {
+			return false;
+		}
+	}
+	return p1 == lhs.end() && p2 == rhs.end();
+}
+bool operator != (const String &lhs, const String &rhs) {
+	return !(lhs == rhs);
+}
+
 std::allocator<char> String::alloc_;
 
 std::ostream& operator<<(std::ostream &os, const String &rhs) {
+	std::cout << "using operator << for String: " << std::endl;
 	for (auto it = std::begin(rhs); it != std::end(rhs); ++it) {
 		os << *it;
 	}

@@ -14,13 +14,16 @@
 #include"11.h"
 #include"12.h"
 #include"13.h"
+#include"14.h"
 using namespace std;
 
 
 int main()
 {
-	Problem13_53();
-	getchar();
+	Problem14_16();
+	while (getchar() != '\n') {
+
+	}
 	getchar();
 	return 0;
 }
